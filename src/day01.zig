@@ -80,28 +80,7 @@ pub fn main() !void {
 
     const reader: *std.Io.Reader = &data_reader.interface;
 
-<<<<<<< HEAD
-    var dial: Dial = Dial{ .position = 50 };
-
-    while (true) {
-        const line = reader.takeDelimiterExclusive('\n') catch break;
-        const number: usize = try std.fmt.parseUnsigned(usize, line[1..], 10);
-
-        switch (line[0]) {
-            'L' => dial.moveLeft(number),
-            'R' => dial.moveRight(number),
-            else => unreachable,
-        }
-
-        //std.debug.print("Move: {s} Position: {d} Count: {d}\n", .{line, dial.position, dial.count});
-
-        reader.toss(1);
-    }
-
-    std.debug.print("Password is: {d}\n", .{dial.count});
-=======
     try puzzle01(reader);
     try data_reader.seekTo(0);
     try puzzle02(reader);
->>>>>>> 8189007
 }
